@@ -5,23 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sven Ahlgrimm</title>
 
-<!-- Favicon -->
 <link rel="icon" type="image/png" href="favicon.png">
-
-<!-- Open Graph / Social Media Meta Tags -->
-<meta property="og:title" content="Sven Ahlgrimm">
-<meta property="og:description" content="I make experimental games like ODDADA. Currently working on an unannounced adventure about bows, knights, monks, tea, sounds, shapes, colors and the desert.">
-<meta property="og:image" content="https://svenahlgrimm.com/social-card.png">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sven Ahlgrimm">
-<meta name="twitter:description" content="I make experimental games like ODDADA. Currently working on an unannounced adventure.">
-<meta name="twitter:image" content="https://svenahlgrimm.com/social-card.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
+  @font-face {
+    font-family: 'Orotund';
+    src: url('Orotund.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
   body{
     background: #5a7ff7;
     color: #f5f4f4;
@@ -55,6 +49,7 @@
 
   a.oddada{
     font-weight: bold;
+    font-size: 1.3em;
   }
 
   form{
@@ -73,6 +68,7 @@
 
   input::placeholder{
     color: #f5f4f4;
+    opacity: 0.75;
   }
 
   input{
@@ -105,9 +101,13 @@
 <body>
 <main>
   <h1>Hello, I'm Sven Ahlgrimm</h1>
+  
   <p>I make experimental games like <a href="https://oddada.com" class="oddada"><span style="color:#75b7da">O</span><span style="color:#f2b84b">D</span><span style="color:#e84829">D</span><span style="color:#6fc98a">A</span><span style="color:#e84829">D</span><span style="color:#f2b84b">A</span></a></p>
-  <p>I'm currently working on an unannounced adventure about bows, knights, monks, tea, sounds, shapes, colors and the desert.</p>
-  <p>You can reach me at <a href="mailto:sven.ahlg@gmail.com">sven.ahlg@gmail.com</a> or on <a href="https://bsky.app/profile/svenahlgrimm.bsky.social">Bluesky</a>, <a href="https://x.com/SvenAhlgrimm">Twitter</a> and <a href="https://www.instagram.com/sven_ahlgrimm/">Instagram</a>.</p>
+
+  <p>I'm currently working on an <span style="font-family: 'Orotund', serif; font-size: 1.3em;">Unannounced Adventure</span> about bows, knights, monks, tea, sounds, shapes, colors and the desert.</p>  
+
+  <p>You can reach me at hello(@)svenahlgrimm.com or on <a href="https://bsky.app/profile/svenahlgrimm.bsky.social">Bluesky</a>, <a href="https://x.com/SvenAhlgrimm">Twitter</a> and <a href="https://www.instagram.com/sven_ahlgrimm/">Instagram</a>.</p>
+
   <p class="newsletter-line">I'll send out a handwritten newsletter on major milestones. It would make me very happy to have you follow my work ❤️</p>
 
   <form id="newsletter-form">
