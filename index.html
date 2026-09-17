@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sven Ahlgrimm</title>
+
+<!-- Favicon -->
+<link rel="icon" type="image/png" href="favicon.png">
+
+<!-- Open Graph / Social Media Meta Tags -->
+<meta property="og:title" content="Sven Ahlgrimm">
+<meta property="og:description" content="I make experimental games like ODDADA. Currently working on an unannounced adventure about bows, knights, monks, tea, sounds, shapes, colors and the desert.">
+<meta property="og:image" content="https://svenahlgrimm.com/social-card.png">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sven Ahlgrimm">
+<meta name="twitter:description" content="I make experimental games like ODDADA. Currently working on an unannounced adventure.">
+<meta name="twitter:image" content="https://svenahlgrimm.com/social-card.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Martian+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body{
+    background: #5a7ff7;
+    color: #f5f4f4;
+    font-family: "Martian Mono", monospace;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 24px;
+  }
+
+  main{
+    max-width: 480px;
+  }
+
+  h1{
+    font-size: 1.1rem;
+    margin: 0 0 12px;
+  }
+
+  p{
+    color: #f5f4f4;
+    line-height: 1.6;
+  }
+
+  a{
+    color: inherit;
+  }
+
+  a.oddada{
+    font-weight: bold;
+  }
+
+  form{
+    display: flex;
+    border: 1px solid #f5f4f4;
+  }
+
+  input, button{
+    font-family: inherit;
+    font-size: inherit;
+    background: none;
+    border: none;
+    color: #f5f4f4;
+    padding: 10px 12px;
+  }
+
+  input::placeholder{
+    color: #f5f4f4;
+  }
+
+  input{
+    flex: 1;
+    outline: none;
+  }
+
+  button{
+    border-left: 1px solid #f5f4f4;
+    cursor: pointer;
+  }
+
+  .newsletter-line{
+    margin-top: 24px;
+  }
+
+  .privacy-note{
+    font-size: 0.7rem;
+    opacity: 0.75;
+    margin-top: 8px;
+  }
+
+  #form-status{
+    margin-top: 12px;
+    font-size: 0.85rem;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<main>
+  <h1>Hello, I'm Sven Ahlgrimm</h1>
+  <p>I make experimental games like <a href="https://oddada.com" class="oddada"><span style="color:#75b7da">O</span><span style="color:#f2b84b">D</span><span style="color:#e84829">D</span><span style="color:#6fc98a">A</span><span style="color:#e84829">D</span><span style="color:#f2b84b">A</span></a></p>
+  <p>I'm currently working on an unannounced adventure about bows, knights, monks, tea, sounds, shapes, colors and the desert.</p>
+  <p>You can reach me at <a href="mailto:sven.ahlg@gmail.com">sven.ahlg@gmail.com</a> or on <a href="https://bsky.app/profile/svenahlgrimm.bsky.social">Bluesky</a>, <a href="https://x.com/SvenAhlgrimm">Twitter</a> and <a href="https://www.instagram.com/sven_ahlgrimm/">Instagram</a>.</p>
+  <p class="newsletter-line">I'll send out a handwritten newsletter on major milestones. It would make me very happy to have you follow my work ❤️</p>
+
+  <form id="newsletter-form">
+    <input type="email" id="email-input" placeholder="email@domain.com" required>
+    <button type="submit" id="submit-btn">Subscribe</button>
+  </form>
+  <p class="privacy-note">(I won't share your address and you can unsubscribe with each update)</p>
+  <p id="form-status"></p>
+</main>
+
+<script>
+  const form = document.getElementById('newsletter-form');
+  const emailInput = document.getElementById('email-input');
+  const submitBtn = document.getElementById('submit-btn');
+  const formStatus = document.getElementById('form-status');
+
+  const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxyrsbcn3vzVzFLXJvLDKUWVh2_k_pmV66YW7UifCL8EjySZNDvX-NKY8spyOTBL2V0/exec';
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = emailInput.value.trim();
+    if (!email) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Saving...';
+    formStatus.style.display = 'none';
+
+    fetch(SCRIPT_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: 'email=' + encodeURIComponent(email)
+    })
+    .then(() => {
+      emailInput.value = '';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Subscribe';
+      formStatus.textContent = 'Thanks for subscribing!';
+      formStatus.style.display = 'block';
+    })
+    .catch(() => {
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Subscribe';
+      formStatus.textContent = 'Error sending email. Please try again.';
+      formStatus.style.display = 'block';
+    });
+  });
+</script>
+</body>
+</html>
